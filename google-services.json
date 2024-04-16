@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "27539554863",
+    "firebase_url": "https://flushfinder-733b3-default-rtdb.firebaseio.com",
+    "project_id": "flushfinder-733b3",
+    "storage_bucket": "flushfinder-733b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27539554863:android:721a93b4164cf1bccefcda",
+        "android_client_info": {
+          "package_name": "Flush.Find"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdH_9iQRuv9IlnsUYjILTcq2eB6H0ZJbI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27539554863:android:6f9164eb54f4ca2acefcda",
+        "android_client_info": {
+          "package_name": "com.example.flushfinder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdH_9iQRuv9IlnsUYjILTcq2eB6H0ZJbI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27539554863:android:e0ae1cbda4b41461cefcda",
+        "android_client_info": {
+          "package_name": "com.example.placesprojectdemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdH_9iQRuv9IlnsUYjILTcq2eB6H0ZJbI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PersmissionsActivity"
+    android:padding="32dp">
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical"
+     android:gravity="center_horizontal">
+     <ImageView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:src="@mipmap/ic_launcher"></ImageView>
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="permission request"
+         android:textSize="24sp"
+         android:layout_marginTop="12dp"
+         android:fontFamily="sans-serif-condensed"
+         android:textStyle="bold"></TextView>
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="places project needs permission to devoce location"
+         android:layout_marginTop="36dp"
+         android:gravity="center_horizontal"
+         ></TextView>
+
+ </LinearLayout>
+    <Button
+        android:id="@+id/btnGrant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFF"
+        android:text="Grant permission"
+        android:textAllCaps="false"></Button>
+</RelativeLayout>
