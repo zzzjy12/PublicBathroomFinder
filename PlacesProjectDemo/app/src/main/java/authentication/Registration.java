@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Registration extends AppCompatActivity {
 
@@ -92,19 +94,51 @@ public class Registration extends AppCompatActivity {
         });
     }
 
-    private void registerUser(String email, String password) {
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(Registration.this, "You have successfully signed up! Welcome to FlushFinder!", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(Registration.this, Login.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(Registration.this, "Registration failed! Please try again.", Toast.LENGTH_SHORT).show();
-                }
+//    private void registerUser(String email, String password) {
+//        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                if (task.isSuccessful()) {
+//                    Toast.makeText(Registration.this, "You have successfully signed up! Welcome to FlushFinder!", Toast.LENGTH_LONG).show();
+//                    Intent intent = new Intent(Registration.this, Login.class);
+//                    startActivity(intent);
+//                    finish();
+//                } else {
+//                    Toast.makeText(Registration.this, "Registration failed! Please try again.", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//    }
+private void registerUser(final String email, final String password) {
+    firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        @Override
+        public void onComplete(@NonNull Task<AuthResult> task) {
+            if (task.isSuccessful()) {
+
+                UserAccount userAccount = new UserAccount(email);
+
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
+
+                databaseReference.child(firebaseAuth.getCurrentUser().getUid())
+                        .setValue(userAccount)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Registration.this, "Registration successful and user data saved!", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(Registration.this, Login.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(Registration.this, "Failed to save user data: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            } else {
+                Toast.makeText(Registration.this, "Registration failed! Please try again.", Toast.LENGTH_SHORT).show();
             }
-        });
-    }
+        }
+    });
+}
+
 }

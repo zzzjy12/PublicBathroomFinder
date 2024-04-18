@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".adminHome">
 
     <ImageView
         android:id="@+id/imageView"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:hint="email"
+        android:hint="admin email"
         app:layout_constraintTop_toTopOf="@id/tv_container_background"
         app:layout_constraintLeft_toLeftOf="@id/tv_container_background"
         app:layout_constraintRight_toRightOf="@id/tv_container_background"
@@ -94,28 +94,6 @@
         />
 
     <Button
-        android:id="@+id/btnAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Admin"
-        android:background="@drawable/transparent_background"
-        android:textColor="@color/hot_pink"
-        app:layout_constraintTop_toBottomOf="@id/btnNoAccount"
-        app:layout_constraintStart_toStartOf="@id/btnNoAccount"
-        />
-
-    <Button
-        android:id="@+id/btnForgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forgot password?"
-        android:background="@drawable/transparent_background"
-        android:textColor="@color/hot_pink"
-        app:layout_constraintTop_toBottomOf="@id/edPassword"
-        app:layout_constraintEnd_toEndOf="@id/edPassword"
-        />
-
-    <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -126,6 +104,5 @@
         android:backgroundTint="@color/hot_pink"
         android:textSize="18sp"
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

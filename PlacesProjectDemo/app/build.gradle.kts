@@ -45,6 +45,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.5.3")
     implementation("com.google.firebase:firebase-auth:22.3.1")
     implementation("com.google.firebase:firebase-database:20.3.1")
+    implementation("androidx.activity:activity:1.8.0")
 //    implementation("com.google.firebase:firebase-database:20.3.0")
 //    implementation("com.google.firebase:firebase-auth:22.3.0")
 //    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))

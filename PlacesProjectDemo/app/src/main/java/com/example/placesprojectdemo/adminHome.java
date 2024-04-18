@@ -1,4 +1,4 @@
-package authentication;
+package com.example.placesprojectdemo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,64 +9,43 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.placesprojectdemo.PersmissionsActivity;
-import com.example.placesprojectdemo.R;
-import com.example.placesprojectdemo.adminHome;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity {
+import authentication.Registration;
+
+public class adminHome extends AppCompatActivity {
 
     EditText edEmail, edPassword;
-    Button btnLogin, btnNoAccount, btnForgotPassword, btnAdmin;
 
+    Button btnLogin, btnNoAccount;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_admin_home);
 
         edEmail = findViewById(R.id.edEmail);
         edPassword = findViewById(R.id.edPassword);
         btnNoAccount = findViewById(R.id.btnNoAccount);
         btnLogin = findViewById(R.id.btnLogin);
-        btnForgotPassword = findViewById(R.id.btnForgotPassword);
-        btnAdmin = findViewById(R.id.btnAdmin);
-
-        btnAdmin.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Login.this, adminHome.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
 
         btnNoAccount.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this, Registration.class);
+                Intent intent = new Intent(adminHome.this, Registration.class);
                 startActivity(intent);
                 finish();
             }
         });
-
-//        btnForgotPassword.setOnClickListener(new View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, ForgotPassword.class);
-//                startActivity(intent);
-////                finish();
-//            }
-//        });
 
         btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -76,16 +55,16 @@ public class Login extends AppCompatActivity {
                 password = String.valueOf(edPassword.getText());
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(Login.this, "Please enter you email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(adminHome.this, "Please enter you email", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(Login.this, "Please enter you password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(adminHome.this, "Please enter you password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (password.length() < 8) {
-                    Toast.makeText(Login.this, "Password must be at least 8 characters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(adminHome.this, "Password must be at least 8 characters", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -93,13 +72,13 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task){
 
                         if (task.isSuccessful()){
-                            Toast.makeText(Login.this, "Welcome back to FlushFinder!", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Login.this, PersmissionsActivity.class);
+                            Toast.makeText(adminHome.this, "Welcome back to admin FlushFinder!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(adminHome.this, adminView.class);
                             startActivity(intent);
                             finish();
                         }
                         else{
-                            Toast.makeText(Login.this, "Incorrect email or password!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(adminHome.this, "Incorrect email or password!", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -107,15 +86,6 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        btnForgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Login.this, Forget.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-
     }
+
 }
